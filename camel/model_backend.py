@@ -34,7 +34,7 @@ OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
 if 'BASE_URL' in os.environ:
     BASE_URL = os.environ['BASE_URL']
 else:
-    BASE_URL = None
+    BASE_URL = 'https://openrouter.ai/api/v1'
 
 
 class ModelBackend(ABC):
@@ -93,6 +93,7 @@ class OpenAIModel(ModelBackend):
                 "gpt-4-turbo": 100000,
                 "gpt-4o": 4096, #100000
                 "gpt-4o-mini": 16384, #100000
+                "google/gemini-2.0-flash-exp:free": int(1.9e6),
             }
             num_max_token = num_max_token_map[self.model_type.value]
             num_max_completion_tokens = num_max_token - num_prompt_tokens
@@ -126,6 +127,7 @@ class OpenAIModel(ModelBackend):
                 "gpt-4-turbo": 100000,
                 "gpt-4o": 4096, #100000
                 "gpt-4o-mini": 16384, #100000
+                "google/gemini-2.0-flash-exp:free": int(1.9e6),
             }
             num_max_token = num_max_token_map[self.model_type.value]
             num_max_completion_tokens = num_max_token - num_prompt_tokens

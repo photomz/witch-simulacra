@@ -52,12 +52,13 @@ class ModelType(Enum):
     GPT_4_TURBO_V = "gpt-4-turbo"
     GPT_4O = "gpt-4o"
     GPT_4O_MINI = "gpt-4o-mini"
+    GEMINI_FLASH_2 = "google/gemini-2.0-flash-exp:frees"
 
     STUB = "stub"
 
     @property
     def value_for_tiktoken(self):
-        return self.value if self.name != "STUB" else "gpt-3.5-turbo-16k-0613"
+        return self.value if self.name != "STUB" else "google/gemini-2.0-flash-exp:free" # "gpt-3.5-turbo-16k-0613"
 
 
 class PhaseType(Enum):
